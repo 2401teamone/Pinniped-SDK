@@ -5,7 +5,7 @@ export default class Data {
     this.sendRequest = sendRequest;
   }
 
-  getAll(tableId, pageNo, limit) {
+  getAll(tableId, pageNum, limit) {
     return this.sendRequest("GET", `${Data.baseUrl}/${tableId}/rows`);
   }
 
@@ -22,6 +22,13 @@ export default class Data {
       "PATCH",
       `${Data.baseUrl}/${tableId}/rows/${rowId}`,
       data
+    );
+  }
+
+  deleteOne(tableId, rowId) {
+    return this.sendRequest(
+      "DELETE",
+      `${Data.baseUrl}/${tableId}/rows/${rowId}`
     );
   }
 }
