@@ -16,4 +16,12 @@ export default class Data {
   createOne(tableId, data) {
     return this.sendRequest("POST", `${Data.baseUrl}/${tableId}/rows`, data);
   }
+
+  updateOne(tableId, rowId, data) {
+    return this.sendRequest(
+      "PATCH",
+      `${Data.baseUrl}/${tableId}/rows/${rowId}`,
+      data
+    );
+  }
 }
