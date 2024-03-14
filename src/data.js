@@ -12,4 +12,8 @@ export default class Data {
   getOne(tableId, rowId) {
     return this.sendRequest("GET", `${Data.baseUrl}/${tableId}/rows/${rowId}`);
   }
+
+  createOne(tableId, data) {
+    return this.sendRequest("POST", `${Data.baseUrl}/${tableId}/rows`, data);
+  }
 }

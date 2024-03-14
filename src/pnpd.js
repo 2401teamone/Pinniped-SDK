@@ -14,7 +14,7 @@ export default class pnpd {
   }
 
   initSendRequest() {
-    return async (method, path, queryString, body) => {
+    return async (method, path, body, queryString) => {
       const request = {
         method,
         url: `${this.url}/api${path}`,
