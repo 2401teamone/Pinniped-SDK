@@ -5,11 +5,11 @@ export default class Data {
     this.sendRequest = sendRequest;
   }
 
-  async getAll(tableId, queryString) {
-    return await this.sendRequest(
-      "GET",
-      `${Data.baseUrl}/${tableId}/rows`,
-      queryString
-    );
+  getAll(tableId, pageNo, limit) {
+    return this.sendRequest("GET", `${Data.baseUrl}/${tableId}/rows`);
+  }
+
+  getOne(tableId, rowId) {
+    return this.sendRequest("GET", `${Data.baseUrl}/${tableId}/rows/${rowId}`);
   }
 }

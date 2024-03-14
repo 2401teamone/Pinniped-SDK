@@ -5,10 +5,21 @@ export default class Auth {
     this.sendRequest = sendRequest;
   }
 
-  async login(username, password) {
-    return await this.sendRequest("POST", `${Auth.baseUrl}/login`, null, {
+  register(username, password) {
+    return this.sendRequest("POST", `${Auth.baseUrl}/register`, null, {
       username,
       password,
     });
+  }
+
+  login(username, password) {
+    return this.sendRequest("POST", `${Auth.baseUrl}/login`, null, {
+      username,
+      password,
+    });
+  }
+
+  logout() {
+    return this.sendRequest("POST", `${Auth.baseUrl}/logout`, null, null);
   }
 }
