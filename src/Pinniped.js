@@ -1,6 +1,6 @@
 import axios from "axios";
-import Auth from "./Auth";
-import Data from "./Data";
+import Auth from "./auth.js";
+import Data from "./data.js";
 
 /**
  * The main class for the Pinniped SDK
