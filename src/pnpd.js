@@ -22,12 +22,15 @@ export default class pnpd {
           "X-API-KEY": this.apiKey,
         },
         params: queryString,
+        withCredentials: true, // Include cookies in requests
       };
       if (body) {
         request.data = body;
       }
 
-      return await axios(request);
+      const response = await axios(request);
+      console.log(response);
+      return response;
     };
   }
 

@@ -5,15 +5,19 @@ export default class Auth {
     this.sendRequest = sendRequest;
   }
 
+  session() {
+    return this.sendRequest("GET", `${Auth.baseUrl}/`);
+  }
+
   register(username, password) {
-    return this.sendRequest("POST", `${Auth.baseUrl}/register`, null, {
+    return this.sendRequest("POST", `${Auth.baseUrl}/register`, {
       username,
       password,
     });
   }
 
   login(username, password) {
-    return this.sendRequest("POST", `${Auth.baseUrl}/login`, null, {
+    return this.sendRequest("POST", `${Auth.baseUrl}/login`, {
       username,
       password,
     });

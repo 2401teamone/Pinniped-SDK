@@ -9,6 +9,15 @@ export default class Data {
     return this.sendRequest("GET", `${Data.baseUrl}/${tableId}/rows`);
   }
 
+  // getAllWhere(tableId, queryObj) {
+  //   return this.sendRequest(
+  //     "GET",
+  //     `${Data.baseUrl}/${tableId}/rows`,
+  //     null,
+  //     queryObj
+  //   );
+  // }
+
   getOne(tableId, rowId) {
     return this.sendRequest("GET", `${Data.baseUrl}/${tableId}/rows/${rowId}`);
   }
