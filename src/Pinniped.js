@@ -19,12 +19,16 @@ class Pinniped {
    * @param {string} baseURL - The base URL of the Pinniped server
    * @property {string} url - The base URL of the Pinniped server
    * @property {Auth} auth - An instance of the Auth class for handling authentication requests
+   * @property {AxiosInstance} axiosClient - An instance of the Axios client
    * @property {Data} db - An instance of the Data class for handling database requests
    * @property {function} sendRequest - A function for sending requests to the server
    */
   constructor(baseURL) {
     this.url = baseURL;
-    this.axios = axios.create({ withCredentials: true });
+    this.axiosClient = axios.create({
+      withCredentials: true,
+      headers: { Accept: "application/json" },
+    });
     this.auth = new Auth(this);
     this.db = new Data(this);
     console.log("Pinniped SDK initialized");
@@ -53,7 +57,7 @@ class Pinniped {
       };
     }
 
-    return this.axios(request);
+    return this.axiosClient(request);
   }
 }
 
