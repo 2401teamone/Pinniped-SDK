@@ -9,9 +9,10 @@ export default class Auth {
    * @property {string} url - The base URL concatenated with the authentication path
    * @property {function} sendRequest - A function for sending requests to the server
    */
-  constructor(baseUrl, sendRequest) {
-    this.url = `${baseUrl}${Auth.PATH}`;
+  constructor({ url, sendRequest, axios }) {
+    this.url = `${url}${Auth.PATH}`;
     this.sendRequest = sendRequest;
+    this.axios = axios;
   }
 
   /**

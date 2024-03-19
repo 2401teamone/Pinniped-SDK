@@ -11,9 +11,10 @@ export default class Data {
    * @property {function} sendRequest - A function for sending requests to the server
    * @memberof Data
    */
-  constructor(baseUrl, sendRequest) {
-    this.url = `${baseUrl}${Data.PATH}`;
+  constructor({ url, sendRequest, axios }) {
+    this.url = `${url}${Data.PATH}`;
     this.sendRequest = sendRequest;
+    this.axios = axios;
   }
 
   /**
