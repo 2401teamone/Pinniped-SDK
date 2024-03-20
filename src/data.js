@@ -21,10 +21,22 @@ export default class Data {
    * @param {string} tableId - The ID of the table
    * @param {number} pageNum - The page number of the results
    * @param {number} limit - The maximum number of results per page
+   * @param {string} sortBy - The column to sort by
+   * @param {string} order - The order to sort by (asc or desc)
    * @returns {Promise} - A promise that resolves with the response from the server
    */
-  getAll(tableId, pageNum, limit) {
-    return this.sendRequest("GET", `/${tableId}/rows`);
+  getAll(tableId, pageNum, limit, sortBy, order) {
+    const args = { pageNum, limit, sortBy, order };
+
+    const queryObj = Object.entries(args).reduce((acc, curr) => {
+      const [key, value] = curr;
+      if (value !== undefined) {
+        acc[key] = value;
+      }
+      return acc;
+    }, {});
+
+    return this.sendRequest("GET", `/${tableId}/rows`, null, queryObj);
   }
 
   /**
