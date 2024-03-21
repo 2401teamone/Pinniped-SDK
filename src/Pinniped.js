@@ -8,24 +8,29 @@ import Data from "./data.js";
 class Pinniped {
   /**
    * Initializes the Pinniped SDK with the provided base URL
-   * @param {string} url - The base URL of the Pinniped server
+   * @param {string} baseURL - The base URL of the Pinniped server
    * @returns {Pinniped} - An instance of the Pinniped SDK
    */
-  static initialize(url) {
-    return new Pinniped(url);
+  static initialize(baseURL) {
+    return new Pinniped(baseURL);
   }
 
   /**
    * @param {string} baseURL - The base URL of the Pinniped server
    * @property {string} url - The base URL of the Pinniped server
    * @property {Auth} auth - An instance of the Auth class for handling authentication requests
+   * @property {AxiosInstance} axiosClient - An instance of the Axios client
    * @property {Data} db - An instance of the Data class for handling database requests
    * @property {function} sendRequest - A function for sending requests to the server
    */
   constructor(baseURL) {
     this.url = baseURL;
-    this.auth = new Auth(baseURL, this.sendRequest);
-    this.db = new Data(baseURL, this.sendRequest);
+    this.axiosClient = axios.create({
+      withCredentials: true,
+      headers: { Accept: "application/json" },
+    });
+    this.auth = new Auth(this);
+    this.db = new Data(this);
     console.log("Pinniped SDK initialized");
   }
 
@@ -41,17 +46,18 @@ class Pinniped {
     const request = {
       method,
       url: `${this.url}${path}`,
-      headers: {
-        "Content-Type": "application/json",
-      },
       params: queryString,
-      withCredentials: true, // Include cookies in requests
     };
-    if (body) {
-      request.data = body;
+
+    if (body) request.data = body;
+
+    if (["POST", "PATCH", "PUT"].includes(method)) {
+      request.headers = {
+        "Content-Type": "application/json",
+      };
     }
 
-    return axios(request);
+    return this.axiosClient(request);
   }
 }
 

@@ -5,15 +5,15 @@ export default class Data {
   static PATH = "/api/tables";
 
   /**
-   * @param {string} baseUrl - The base URL of the Pinniped server
-   * @param {function} sendRequest - A function for sending requests to the server
-   * @property {string} url - The base URL concatenated with the data path
+   * @param {object} - Instance of the Pinniped SDK
+   * @property {string} url - The base URL concatenated with the Data PATH
    * @property {function} sendRequest - A function for sending requests to the server
-   * @memberof Data
+   * @property {AxiosInstance} axiosClient - An instance of the Axios client
    */
-  constructor(baseUrl, sendRequest) {
-    this.url = `${baseUrl}${Data.PATH}`;
+  constructor({ url, sendRequest, axiosClient }) {
+    this.url = `${url}${Data.PATH}`;
     this.sendRequest = sendRequest;
+    this.axiosClient = axiosClient;
   }
 
   /**

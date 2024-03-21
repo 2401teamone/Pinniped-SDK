@@ -5,13 +5,15 @@ export default class Auth {
   static PATH = "/api/auth";
 
   /**
-   * @param {function} sendRequest - A function for sending requests to the server
-   * @property {string} url - The base URL concatenated with the authentication path
+   * @param {object} - Instance of the Pinniped SDK
+   * @property {string} url - The base URL concatenated with the Auth PATH
    * @property {function} sendRequest - A function for sending requests to the server
+   * @property {AxiosInstance} axiosClient - An instance of the Axios client
    */
-  constructor(baseUrl, sendRequest) {
-    this.url = `${baseUrl}${Auth.PATH}`;
+  constructor({ url, sendRequest, axiosClient }) {
+    this.url = `${url}${Auth.PATH}`;
     this.sendRequest = sendRequest;
+    this.axiosClient = axiosClient;
   }
 
   /**
