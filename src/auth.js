@@ -20,7 +20,7 @@ export default class Auth {
    * Retrieves the current user session
    * @returns {Promise} - A promise that resolves with the user session
    */
-  session() {
+  getUser() {
     return this.sendRequest("GET", "/");
   }
 

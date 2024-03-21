@@ -38,19 +38,18 @@ class Pinniped {
    * Sends a request to the Pinniped server
    * @param {string} method - The HTTP method of the request
    * @param {string} path - The path of the request
-   * @param {object} body - The body of the request
-   * @param {object} queryString - The query string of the request
+   * @param {object} [body] - The body of the request - optional
+   * @param {object} [queryObj] - An object with key-value pairs for the query string - optional
    * @returns {Promise} - A promise that resolves with the response from the server
    */
-  sendRequest(method, path, body, queryString) {
+  sendRequest(method, path, body, queryObj) {
     const request = {
       method,
       url: `${this.url}${path}`,
-      params: queryString,
     };
 
     if (body) request.data = body;
-
+    if (queryObj) request.params = new URLSearchParams(queryObj);
     if (["POST", "PATCH", "PUT"].includes(method)) {
       request.headers = {
         "Content-Type": "application/json",
