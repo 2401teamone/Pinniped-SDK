@@ -1,6 +1,6 @@
 {
   "name": "pinniped-sdk",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "SDK for communicating with your Pinniped backend",
   "main": "src/Pinniped.js",
   "scripts": {
