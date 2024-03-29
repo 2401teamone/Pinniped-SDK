@@ -33,6 +33,9 @@ await pnpd.auth.logout();
 //Get all rows from a table
 const rows = await pnpd.db.getAll(tableId);
 
+//Get all rows from a table with pagination and sorting by a given column name
+const rows = await pnpd.db.getAll(tableId, pageNum, limit, sortBy, order);
+
 //Get one row from a table
 const row = await pnpd.db.getOne(tableId, rowId);
 

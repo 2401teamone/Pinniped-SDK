@@ -48,6 +48,8 @@ class Pinniped {
       url: `${this.url}${path}`,
     };
 
+    console.log(`path: ${path} - url: ${request.url}`);
+
     if (body) request.data = body;
     if (queryObj) request.params = new URLSearchParams(queryObj);
     if (["POST", "PATCH", "PUT"].includes(method)) {
