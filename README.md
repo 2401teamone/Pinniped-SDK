@@ -12,9 +12,9 @@ import Pinniped from "Pinniped-sdk";
 const pnpd = new Pinniped("http://yourwebsite.com");
 ```
 
-### Usage
+## Documentation
 
-## Authentication
+### Authentication
 
 ```javascript
 // Register
@@ -27,7 +27,7 @@ await pnpd.auth.login(username, password);
 await pnpd.auth.logout();
 ```
 
-## Database Access
+### Database Access
 
 ```javascript
 // Get all rows from a table
