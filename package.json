@@ -1,8 +1,9 @@
 {
   "name": "pinniped-sdk",
-  "version": "0.3.0",
+  "version": "0.5.1",
   "description": "SDK for communicating with your Pinniped backend",
   "main": "src/Pinniped.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,7 +18,7 @@
     },
     {
       "name": "Josh Lakenan",
-      "email": "joshlakenan@gmail.com"
+      "email": "joshualakenan@gmail.com"
     },
     {
       "name": "Trevor Rees-Jones",
